@@ -1,0 +1,47 @@
+<div class="mat-elevation-z8">
+    <div>
+      <a routerLink="/contacts" class="btn btn-outline-secondary pull-left">Retour</a>
+      <h2> Modifier le contact</h2>
+    </div>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit(contactForm.value)">
+
+        <mat-form-field class="contact_width_large" appearance="fill">
+          <input matInput placeholder="Nom" id="lastName" class="form-control" formControlName="lastName" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!contactForm.get('lastName').valid && contactForm.get('lastName').touched">Entrer votre nom</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="contact_width_large" appearance="fill">
+          <input matInput placeholder="Prénom" id="firstName" class="form-control" formControlName="firstName" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!contactForm.get('firstName').valid && contactForm.get('firstName').touched">Entrer votre prénom</span>
+          </mat-error>
+        </mat-form-field>
+
+        <input matInput [matDatepicker]="dp" placeholder="Date de naissance" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        <mat-error>
+          <span *ngIf="!contactForm.get('birthDate').valid && contactForm.get('birthDate').touched">Entrer votre date de naissance</span>
+        </mat-error>
+
+        <mat-form-field class="contact_width_large" appearance="fill">
+          <input matInput placeholder="Adresse" id="address" class="form-control" formControlName="address">
+         <mat-error>
+           <span *ngIf="!contactForm.get('address').valid && contactForm.get('address').touched">Entrer votre adresse</span>
+          </mat-error>
+         </mat-form-field>
+
+        <mat-slide-toggle [(ngModel)]="checked"
+                        class="toogleIsProfessionnal"
+                        (change)="changedToogleResultToBoolInNumber()"
+                        formControlName="isProfessionnal">
+        Contact professionnel
+        </mat-slide-toggle>
+        <button type="submit" [disabled]="!contactForm.valid" class="btn btn-secondary pull-right">Enregistrer</button>
+        <button type="button" routerLink="/contacts" class="btn btn-outline-secondary pull-right">Annuler</button>
+    </form>
+
+</div>

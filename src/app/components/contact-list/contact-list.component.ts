@@ -31,9 +31,7 @@ export class ContactListComponent implements OnInit, AfterViewInit, OnDestroy {
   navigationSubscription;
 
   ngOnInit() {
-    this.getArrayAll();
-    this.getArrayPro();
-    this.getArrayNonPro();
+    this.ngAfterViewInit();
   }
 
   ngAfterViewInit(): void {
@@ -108,6 +106,9 @@ updateContact(id: number) {
   /*Méthode de suppresion d'un contact */
   deleteContact(id: number) {
     this.contactService.deleteContact(id).subscribe(data => data);
+    alert('Contact supprimé!');
+    this.router.navigate(['contacts/']);
+    this.ngAfterViewInit();
   }
 
   ngOnDestroy() {

@@ -62,7 +62,6 @@ export class ContactEditComponent implements OnInit {
     contact.firstName = this.contactForm.get(['firstName']).value;
     contact.address = this.contactForm.get(['address']).value;
     contact.isProfessionnal = this.isProfessionnal;
-    console.log(contact.isProfessionnal);
     this.birthDateResult = new Date(this.contactForm.get(['birthDate']).value).setHours(12);
     contact.birthDate = this.birthDateResult;
     this.contactService.updateContact(this.id, contact).subscribe(data => data);

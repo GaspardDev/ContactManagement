@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'contacts',
     component: ContactListComponent,
     runGuardsAndResolvers: 'always'},
-  { path: 'contacts/:id', component: ContactEditComponent }
+  { path: 'contacts/:id', component: ContactEditComponent, runGuardsAndResolvers: 'always' }
 ];
 
 @NgModule({

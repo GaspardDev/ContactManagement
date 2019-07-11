@@ -54,7 +54,7 @@ export class ContactFormComponent implements OnInit {
 
   /* Méthode pour retour au tableau après la création du contact */
   gotoContactList() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/contacts']);
   }
 
   /* Permet de transformer le résultat du bouton de booléen à nombre
